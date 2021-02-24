@@ -36,19 +36,19 @@ $ docker-compose up
 1. Move your shell scripts into the 'sample' folder or modify ./docker-compose.yml to map the Docker container's ./slug directory to a different folder on your host machine.
 
 2. Modify ./slug/sample/slug.json to point to your scripts.  Your scripts will have URL formats resembling the JSON structure of slug.json, like this:
-http://localhost:9082/{{App Namespace}}/{{App Name}}/action/{{Script Name}}
+`http://localhost:9082/{{App Namespace}}/{{App Name}}/action/{{Script Name}}`
 
 * Example URL for accessing the Star Wars API shortcut (swapi.bash) script from the './slug/sample/collection1/apps' directory:
-http://localhost:9082/my_app_collections/app1/action/star_wars
+`http://localhost:9082/my_app_collections/app1/action/star_wars`
 
 3. Your scripts can accept any ammount of stringed arguments and flags by using the format of "?arg1=Foo&flag1=-Bar&arg2=Foo2&flag2=--Name"
 Example URL for querying the Star Wars API script with arguments (will return Luke, Anakin and Shmi):
-http://localhost:9082/my_app_collections/app1/action/star_wars?arg1=people&arg2=Skywalker
+`http://localhost:9082/my_app_collections/app1/action/star_wars?arg1=people&arg2=Skywalker`
 
 4. Once you have created a service application that you'd like to use in your solution, you can run 'docker-compose bundle' to generate a .dab file for release to another environment, which will include your own code as well as Docker Machine instructions for creating containers in your environment.  
 
 Or, you can build from docker-compose.yml, to build and publish your own Docker images for SLUG PHP and Nginx containers, in your own swarm setup. 
-https://docs.docker.com/compose/reference/overview/
+`https://docs.docker.com/compose/reference/overview/`
 
   #### Example
   ```
