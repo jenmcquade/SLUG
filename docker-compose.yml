@@ -1,0 +1,31 @@
+version: '3'
+      
+services:
+
+  php:
+    image: slug
+    env_file:
+      - ./slug/.env
+    build: 
+      context: ./slug
+      args:
+        slug_env: 'development'
+    container_name: slug
+    volumes:
+     - ./slug/www:/var/www/html
+     - ./slug/sample:/usr/bin/local/slug-scripts
+    ports: 
+     - "9000"
+     - "9011"
+
+  nginx:
+    image: slug_nginx
+    build: ./nginx
+    container_name: slug_nginx
+    ports:
+     - "9082:9082"
+    depends_on:
+     - php
+    links:
+     - php
+

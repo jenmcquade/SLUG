@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# Description: ENTRYPOINT for running Docker Images in Containers
+
+# Use this file for customizing the default behavior when a container is created
+
+# CUSTOM PHP SETTINGS
+echo "max_execution_time=30" >> /usr/local/etc/php/conf.d/slug.ini
+echo "track_errors=On" >> /usr/local/etc/php/conf.d/slug.ini
+
+# XDEBUG configuration
+echo "xdebug.default_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.remote_connect_back=Off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.profiler_enable=Off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.remote_enable=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.remote_autostart=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.remote_port=9011" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.remote_host=$(/sbin/ip route|awk '/default/ { print $3 }')" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.idekey=deslug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.auto_trace=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.cli_color=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.var_display_max_data=-1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.var_display_max_children=-1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.var_display_max_depth=-1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.collect_includes=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.collect_assignments=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.collect_params=4" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.collect_return=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.collect_vars=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.force_error_reporting=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.scream=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.show_error_trace=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.show_exception_trace=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.show_local_vars=On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.trace_output_dir=/dev/stdout" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.trace_output_name=trace" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini  
+echo "xdebug.trace_options=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+echo "xdebug.trace_format=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# USED TO INITIATE PHP FROM THIS SCRIPT
+php-fpm

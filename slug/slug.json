@@ -1,0 +1,51 @@
+{
+	"org": {
+			"sh_root": "/",
+			"slug": {
+				"web_root": "/var/www/html",
+				"my_app_collections": {
+					"sh_root": "/",
+					"app1": {
+						"sh_root": "/collection1/apps",
+						"action": [
+							{
+								"file": "swapi.bash",
+								"name": "star_wars",
+								"type": "bash",
+								"log": "true",
+								"msg": {
+									"success": "@host",
+									"failure": "I had a bad feeling about this..."
+								}
+							}
+						]
+					},
+					"app2": {
+						"sh_root": "/collection2/apps",
+						"action": [
+							{
+								"file": "weather.py",
+								"name": "weather",
+								"type": "python3",
+								"log": "true",
+								"msg": {
+									"success": "@host",
+									"failure": "An error occurred while calling the weather service."
+								}
+							},
+							{
+								"file": "geoip.rb",
+								"name": "geoip",
+								"type": "rb",
+								"log": "true",
+								"msg": {
+									"success": "@host",
+									"failure": "@host"
+								} 
+							}
+						]
+					}
+				}
+			}        
+	}
+}
