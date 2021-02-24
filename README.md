@@ -1,7 +1,10 @@
-# SLUG
-Service Levels Under Guest: RESTful routing access to execute Linux shell scripts
 
-## Note: Both of the DockerHub images, SLUG PHP (bistormllc/slug:latest) and SLUG NGINX (bistormllc/slug:nginx) are built from Dockerfiles contained in this repository.  You can modify these Dockerfile build instructions to copy your scripts into the Alpine-based Docker image during a build.  Use these images to run your own customized SLUG service environment, without the need to copy your scripts from another location.
+# SLUG
+* Service Levels Under Guest: RESTful routing access to execute Linux shell scripts
+
+* A Docker based PHP application for running server-side scripts via custom URLs.
+
+## Note: Both of the DockerHub images, SLUG PHP (jenmcquade/slug:latest) and SLUG NGINX (jenmcquade/slug:nginx) are built from Dockerfiles contained in this repository.  You can modify these Dockerfile build instructions to copy your scripts into the Alpine-based Docker image during a build.  Use these images to run your own customized SLUG service environment, without the need to copy your scripts from another location.
 
 ## Use Cases
 1.  Host a service shortcut that curls an outside vendor's API and returns a JSON response.
@@ -11,19 +14,16 @@ Service Levels Under Guest: RESTful routing access to execute Linux shell script
 5.  Provide a generic service gateway to mask the use of multiple languages and technologies
 
 ## Suggestions
-We suggest that developers do not use this application environment to host a UI or Database.  In its purest form, SLUG provides a manageable way to interface with other applications (in the same or other environments).  Using promises in your Web Service calls can allow you to manage an initial transaction to your database or UI, then while this connection is open, you can pass arguments to your scripts hosted on SLUG via port :9082, to further process or cleanse your transaction data before returning it to the source application.  
+I suggest that developers do not use this application environment to host a UI or Database.  In its purest form, SLUG provides a manageable way to interface with other applications (in the same or other environments).  Using promises in your Web Service calls can allow you to manage an initial transaction to your database or UI, then while this connection is open, you can pass arguments to your scripts hosted on SLUG via port :9082, to further process or cleanse your transaction data before returning it to the source application.  
 
 You could also use this environment as an intermediary platform for external API calls, allowing you to preserve a URL context that maps to your company's domain without exposing your external dependencies.  The slug.json configuration file makes it easy to manage what scripts are accessible to the public.
-
-# How To:
-http://blog.bistorm.org/2017/04/03/bistorm-slug-how-to/
 
 ## To create a SLUG environment for your own scripts:
 
 1. Clone the project into your solution and run 'docker-compose up'
 #### Example
 ```
-$ git clone https://github.com/BiStormLLC/SLUG && cd SLUG
+$ git clone https://github.com/jenmcquade/SLUG && cd SLUG
 $ docker-compose up
 ```
 2. Move your shell scripts into the 'sample' folder or modify ./docker-compose.yml to map the Docker container's ./slug directory to a different folder on your host machine.
