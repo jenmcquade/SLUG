@@ -48,7 +48,7 @@ Example URL for querying the Star Wars API script with arguments (will return Lu
 4. Once you have created a service application that you'd like to use in your solution, you can run 'docker-compose bundle' to generate a .dab file for release to another environment, which will include your own code as well as Docker Machine instructions for creating containers in your environment.  
 
 Or, you can build from docker-compose.yml, to build and publish your own Docker images for SLUG PHP and Nginx containers, in your own swarm setup. 
-`https://docs.docker.com/compose/reference/overview/`
+https://docs.docker.com/compose/reference/overview/
 
   #### Example
   ```
